@@ -33,6 +33,7 @@ const handleConnection = socket => {
         const socketIndex = clients.findIndex(c => c.socket === socket);
         const username = clients[socketIndex].name;
         broadcast(socketIndex, `${username} saiu do chat!`);
+        clients.splice(socketIndex, 1);
     });
 
 }
