@@ -1,5 +1,5 @@
 const Marshaller = require('../common/marshaller');
-const Unmashaller = require('../common/unmarshaller');
+const Unmarshaller = require('../common/unmarshaller');
 const dgram = require('dgram');
 
 class ServerInvoker {
@@ -10,8 +10,8 @@ class ServerInvoker {
         
         this.socket.on('message', (msg, rinfo) => {
             try {
-                const expression = Unmashaller.inputStream(msg);
-                var result = invocationHandler(expression);
+                const input = Unmarshaller.inputStream(msg);
+                var result = invocationHandler(input);
                 this.send(result, rinfo.port);   
             } catch (error) {
                 this.send("Expressão inválida", rinfo.port); 

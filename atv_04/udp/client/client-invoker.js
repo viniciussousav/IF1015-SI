@@ -1,5 +1,5 @@
 const Marshaller = require('../common/marshaller');
-const Unmashaller = require('../common/unmarshaller');
+const Unmarshaller = require('../common/unmarshaller');
 const dgram = require('dgram');
 
 class ClientInvoker {
@@ -9,7 +9,7 @@ class ClientInvoker {
         this.socket =  dgram.createSocket('udp4');
         
         this.socket.on('message', (msg, rinfo) => {
-            console.log(Unmashaller.inputStream(msg));
+            console.log(Unmarshaller.inputStream(msg));
         });
 
         this.socket.bind();
